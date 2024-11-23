@@ -1,6 +1,14 @@
 #include <iostream>
 using namespace std;
 
+/*
+    const-ness in UDT (user defined data types)
+    - If an object is a constant, non of its data members can be changed
+    - A constant object cannot invoke a normal methods of the class because it can make changes in the data members
+    - Constant objects can invoke (select) methods if they are constant member functions
+    But, no data members can be changed inside constant member functions
+*/
+
 class MyClass {
     int var;
 public:
