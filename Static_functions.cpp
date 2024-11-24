@@ -13,5 +13,5 @@ public:
 int main()
 {
     // invoking a static member function
-    GfG::printMsg();
+    GfG::printMsg(); // without create a object it can be call 
 }
