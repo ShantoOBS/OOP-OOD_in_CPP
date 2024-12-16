@@ -1,8 +1,14 @@
 #include <bits/stdc++.h>
 using namespace std;
+/*
+ Function overloading: 
 
-//Very simple examples are used for better understanding the concepts
+When there are multiple functions in a class with the same name but different parameters, these functions are overloaded. 
+The main advantage of function overloading is that it increases the program’s readability. 
+Functions can be overloaded by using different numbers of arguments or by using different types of arguments. 
+We have already discussed function overloading in detail in the previous module.
 
+*/
 void add(int a, int b) {
     cout << a + b << endl;
 }
