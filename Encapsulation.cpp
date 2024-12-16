@@ -1,11 +1,12 @@
 #include <iostream>
 using namespace std;
 
-/*
-
-  Encapsulation refers to bundling data and the methods that operate on that data into a single unit.  
-  
-*/
+/* Encapsulation is the conecpt of oops that is used to wrap the data member and member function into a single unit.
+    
+    The main purpose of encapsulation is to secure the data 
+    Its a information hidding 
+    
+ */
 
 class Student {    
     // private data members    
