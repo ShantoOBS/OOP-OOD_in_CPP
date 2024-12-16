@@ -1,8 +1,9 @@
 #include <iostream>
+#include<bits/stdc++.h>
 using namespace std;
 
 /*
-  Abstraction means providing only some of the information to the user by hiding its internal implementation details
+ Data Abstraction is a technique by which only necessary data is shown to the user and unnecessary data is hidden.
 
 */
 
