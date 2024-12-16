@@ -44,6 +44,19 @@ class RedRose : public Rose;        //Derived
 
 
 /*
+Syntax:
+
+class parent_class 
+{    
+//Body of parent class
+};
+
+class child_class: access_modifier parent_class 
+{    
+//Body of child class
+};
+
+
     Inheritance Semantics in C++:
     1) Derived ISA base
     2) Data members
