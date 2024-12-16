@@ -38,7 +38,8 @@ int main() {
     
  
     
-    D obj4;
+     D obj4;
+    obj4.B::print1(); // to avoid ambiguity 
     obj4.print2();
     obj4.print3();
     obj4.print4();
