@@ -1,6 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
-
+/*
+     Class template is also know as generic class we use class template when user doesn't know what kind of value to pass from the parameters.
+*/
 template<class A>
 class print{
     public:
