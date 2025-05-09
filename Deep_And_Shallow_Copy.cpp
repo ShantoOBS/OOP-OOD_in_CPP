@@ -1,62 +1,106 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 /*
-    Free Copy Constructor and Shallow Copy (Bit Copy):
-    - If user doesn't provide a copy constructor, compiler provides one and does a bit copy
+Shallow Copy – Copies only pointers (not the data they point to)
+Definition: Copies the values of all member variables as is, including pointers.
 
-    Sometimes bit copy will be fine. But sometimes it will lead to unexpected results.
-    See the example below
+Effect: Both original and copied objects share the same memory for dynamic data.
 
-    What is Shallow Copy or Bit Copy ?
-    Ans : With bit-copy, only the pointer is copied - not the pointed object. This may be risky.
-
-    ALERT :  So, Bit-copy(Shallow Copy) is not same as Object Copy(Deep Copy)  !!!
+Problem: Changes in one object may affect the other; can lead to issues like double deletion.
 */
 
-class String {
+#include <iostream>
+using namespace std;
+
+class ShallowCopy {
 public:
-    char* str_;
-    size_t len_;
+    int* data;
 
-public:
-    // Constructor
-    String(const char* s) : str_(strdup(s)), len_(strlen(s)) {}
-
-    // Custom Copy Constructor (Deep Copy)
-    // If We Never Use Custom Copy Constructor That Time is Call (Shallow Copy)
-    String(const String& other) {
-        str_ = strdup(other.str_);  // Allocate new memory and copy string
-        len_ = other.len_;         // Copy length
+    ShallowCopy(int value) {
+        data = new int(value);
     }
 
-    // Destructor
-    ~String() {
-        cout << "String Destructor. Bye Bye !" << endl;
-        free(str_);
+    // Default copy constructor (shallow copy)
+    void showData() {
+        cout << "Value: " << *data << ", Address: " << data << endl;
     }
 
-    // Function to convert the string to uppercase
-    void strToUpper() {
-        for (size_t i = 0; i < len_; i++) {
-            str_[i] = toupper(str_[i]);
-        }
-    }
-
-    // Print function
-    void print() {
-        cout << "(" << str_ << ": " << len_ << ")" << endl;
+    ~ShallowCopy() {
+        delete data;
     }
 };
 
 int main() {
-    String s("batman");  // Create a String object
+    ShallowCopy obj1(10);
+    ShallowCopy obj2 = obj1;  // Shallow copy
 
-    s.print();           // Output: (batman: 6)
+    cout << "Original object: ";
+    obj1.showData();
 
-    s.strToUpper();      // Convert to uppercase
-    s.print();           // Output: (BATMAN: 6)
+    cout << "Copied object: ";
+    obj2.showData();
 
+    *obj2.data = 99;  // Changing obj2 also affects obj1
+
+    cout << "After changing obj2:\n";
+    obj1.showData();
+    obj2.showData();
 
     return 0;
 }
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------
+
+/*
+Deep Copy – Copies actual data (new memory allocation)
+Definition: Copies all values, and for pointers, allocates new memory and copies the content.
+
+Effect: Each object has its own copy of dynamically allocated memory.
+
+Advantage: Objects are independent, avoiding issues like memory conflicts.
+*/
+
+#include <iostream>
+using namespace std;
+
+class DeepCopy {
+public:
+    int* data;
+
+    DeepCopy(int value) {
+        data = new int(value);
+    }
+
+    // Custom copy constructor (deep copy)
+    DeepCopy(const DeepCopy& source) {
+        data = new int(*(source.data));
+    }
+
+    void showData() {
+        cout << "Value: " << *data << ", Address: " << data << endl;
+    }
+
+    ~DeepCopy() {
+        delete data;
+    }
+};
+
+int main() {
+    DeepCopy obj1(10);
+    DeepCopy obj2 = obj1;  // Deep copy
+
+    cout << "Original object: ";
+    obj1.showData();
+
+    cout << "Copied object: ";
+    obj2.showData();
+
+    *obj2.data = 99;  // Changing obj2 doesn't affect obj1
+
+    cout << "After changing obj2:\n";
+    obj1.showData();
+    obj2.showData();
+
+    return 0;
+}
+
+    
