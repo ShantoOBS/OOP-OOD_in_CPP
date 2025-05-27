@@ -1,23 +1,13 @@
-/* In C++, enumeration is a user-defined data type 
-that consists of a set of named integer constants. It helps in assigning meaningful
-names to integer values to improve code readability and maintainability.*/
+/* In C++, Enumeration (Enum) is a user-defined data type that contains a fixed set of named integer constants.
+We can define the enumeration using the enum keyword. It helps to make the code more readable and maintainable..*/
 
-#include <iostream>
-using namespace std;
-
-// Defining enum
-enum fruit {
-    APPLE, BANANA = 5, ORANGE
-};
-
-int main() {
-
-    // Creating enum variable
-    fruit f = BANANA;
-    cout << f << endl;
-    
-    // Changing the value
-    f = ORANGE;
-    cout << f;
-    return 0;
-}
+#include <iostream>    
+using namespace std;  //using standard namespace  
+enum month {Jan, Feb, Mar, Apr, May, June};    
+int main()   //Main Function  
+{    
+    month mon_name;    
+    mon_name = Mar;    
+    cout << "Month: " << mon_name+1<<endl;    
+    return 0;    
+}  
